@@ -1,7 +1,7 @@
 # Pagination Component
 
 [![Build Status](https://travis-ci.org/MindyPHP/Pagination.svg?branch=master)](https://travis-ci.org/MindyPHP/Pagination)
-[![Coverage Status](https://img.shields.io/coveralls/MindyPHP/Pagination.svg)](https://coveralls.io/r/MindyPHP/Pagination)
+[![codecov](https://codecov.io/gh/MindyPHP/Pagination/branch/master/graph/badge.svg)](https://codecov.io/gh/MindyPHP/Pagination)
 [![Latest Stable Version](https://poser.pugx.org/mindy/pagination/v/stable.svg)](https://packagist.org/packages/mindy/pagination)
 [![Total Downloads](https://poser.pugx.org/mindy/pagination/downloads.svg)](https://packagist.org/packages/mindy/pagination)
 

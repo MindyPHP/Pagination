@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 /*
- * This file is part of Mindy Framework.
- * (c) 2017 Maxim Falaleev
+ * Studio 107 (c) 2017 Maxim Falaleev
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -14,6 +15,7 @@ use Mindy\Pagination\DataSource\ArrayDataSource;
 use Mindy\Pagination\Handler\RequestPaginationHandler;
 use Mindy\Pagination\Pagination;
 use Mindy\Pagination\PaginationFactory;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Generator\UrlGenerator;
@@ -32,7 +34,7 @@ use Symfony\Component\Routing\RouteCollection;
  * @site http://studio107.ru
  * @date 17/04/14.04.2014 16:45
  */
-class PaginationTest extends \PHPUnit_Framework_TestCase
+class PaginationTest extends TestCase
 {
     public function tearDown()
     {
@@ -117,7 +119,9 @@ class PaginationTest extends \PHPUnit_Framework_TestCase
 
     public function testPaginate()
     {
-        $pager = $this->createPagination([], [],
+        $pager = $this->createPagination(
+            [],
+            [],
             $this->getHandler(Request::create('/?Pager_1=2&Pager_1_PageSize=30'))
         );
         $this->assertSame('Pager_1', $pager->getPageKey());
@@ -125,7 +129,9 @@ class PaginationTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('Pager_1_PageSize', $pager->getPageSizeKey());
         $this->assertSame(30, $pager->getPageSize());
 
-        $pager = $this->createPagination([], [],
+        $pager = $this->createPagination(
+            [],
+            [],
             $this->getHandler(Request::create('/?Pager_2=2&Pager_1_PageSize=30'))
         );
         $this->assertSame('Pager_2', $pager->getPageKey());
