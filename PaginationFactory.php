@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 /*
- * This file is part of Mindy Framework.
- * (c) 2017 Maxim Falaleev
+ * Studio 107 (c) 2017 Maxim Falaleev
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -27,15 +28,18 @@ class PaginationFactory
     /**
      * @param array|DataSourceInterface|mixed $source
      * @param array                           $parameters
-     * @param PaginationHandlerInterface      $handler
+     * @param PaginationHandlerInterface|null $handler
      *
      * @return Pagination
      */
-    public function createPagination($source, array $parameters, PaginationHandlerInterface $handler)
+    public function createPagination($source, array $parameters, PaginationHandlerInterface $handler = null)
     {
-        $handler = $handler ? $handler : new NativePaginationHandler();
-
-        return new Pagination($source, $parameters, $handler, $this->findDataSource($source));
+        return new Pagination(
+            $source,
+            $parameters,
+            $handler ? $handler : new NativePaginationHandler(),
+            $this->findDataSource($source)
+        );
     }
 
     /**
